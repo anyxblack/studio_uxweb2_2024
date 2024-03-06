@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Basic Socket template</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: purple;
+        }
+
+        .star {
+            stroke-dasharray: 150;
+            stroke: white;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="audioPlayer" src="./sparkle.mp3" preload="auto" type="audio/mpeg"></audio>
+
+    <svg id="ripple-template" class="star" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        style="background: none; display: none; shape-rendering: auto;" viewBox="-250 -250 500 500"
+        preserveAspectRatio="xMidYMid">
+        <path height="500" fill="white" stroke="#FFFF00" stroke-width="3"
+            d="M161.66 418.68c0-184.78-18.97-209.34-161.66-209.34 142.7 0 161.66-24.56 161.66-209.34 0 184.78 18.97 209.34 161.66 209.34-142.7 0-161.66 24.56-161.66 209.34Z">
+
+            <animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.5 0.5" to="3 3"
+                dur="10s" repeatCount="indefinite" />
+
+            <animate attributeName="height" dur="2s" values="0;250" keyTimes="0;1" keySplines="0 0.2 0.8 1"
+                calcMode="spline" begin="0s"></animate>
+            <animate class="last" attributeName="opacity" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0s" fill="freeze"></animate>
+        </path>
+        <path height="500" fill="white" stroke="#FFFF00" stroke-width="3"
+            d="M161.66 418.68c0-184.78-18.97-209.34-161.66-209.34 142.7 0 161.66-24.56 161.66-209.34 0 184.78 18.97 209.34 161.66 209.34-142.7 0-161.66 24.56-161.66 209.34Z">
+            <animate attributeName="opacity" dur="0.6s" values="0;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0s" fill="freeze"></animate>
+            <animateTransform attributeName="transform" attributeType="XML" type="scale" begin="0.2s" from="0.5 0.5"
+                to="3 3" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="opacity" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0.2s" fill="freeze"></animate>
+        </path>
+        <path height="500" fill="white" stroke="#FFFF00" stroke-width="3"
+            d="M161.66 418.68c0-184.78-18.97-209.34-161.66-209.34 142.7 0 161.66-24.56 161.66-209.34 0 184.78 18.97 209.34 161.66 209.34-142.7 0-161.66 24.56-161.66 209.34Z">
+            <animate attributeName="opacity" dur="0.6s" values="0;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0s" fill="freeze"></animate>
+            <animateTransform attributeName="transform" attributeType="XML" type="scale" begin="0.4s" from="0.5 0.5"
+                to="3 3" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="opacity" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0.4s" fill="freeze"></animate>
+        </path>
+        <path height="500" fill="white" stroke="#FFFF00" stroke-width="3"
+            d="M161.66 418.68c0-184.78-18.97-209.34-161.66-209.34 142.7 0 161.66-24.56 161.66-209.34 0 184.78 18.97 209.34 161.66 209.34-142.7 0-161.66 24.56-161.66 209.34Z">
+            <animate attributeName="opacity" dur="0.6s" values="0;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0s" fill="freeze"></animate>
+            <animateTransform attributeName="transform" attributeType="XML" type="scale" begin="0.6s" from="0.5 0.5"
+                to="3 3" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="opacity" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0.6s" fill="freeze"></animate>
+        </path>
+
+        <path height="500" fill="white" stroke="#FFFF00" stroke-width="3"
+            d="M161.66 418.68c0-184.78-18.97-209.34-161.66-209.34 142.7 0 161.66-24.56 161.66-209.34 0 184.78 18.97 209.34 161.66 209.34-142.7 0-161.66 24.56-161.66 209.34Z">
+            <animate attributeName="opacity" dur="0.6s" values="0;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0s" fill="freeze"></animate>
+            <animateTransform attributeName="transform" attributeType="XML" type="scale" begin="0.8s" from="0.5 0.5"
+                to="3 3" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="opacity" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0.8s" fill="freeze"></animate>
+        </path>
+
+        <path height="500" fill="white" stroke="#FFFF00" stroke-width="3"
+            d="M161.66 418.68c0-184.78-18.97-209.34-161.66-209.34 142.7 0 161.66-24.56 161.66-209.34 0 184.78 18.97 209.34 161.66 209.34-142.7 0-161.66 24.56-161.66 209.34Z">
+            <animate attributeName="opacity" dur="0.6s" values="0;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="0s" fill="freeze"></animate>
+            <animateTransform attributeName="transform" attributeType="XML" type="scale" begin="1s" from="0.5 0.5"
+                to="3 3" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="opacity" dur="2s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1"
+                calcMode="spline" begin="1s" fill="freeze"></animate>
+        </path>
+
+    </svg>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    let offset_x = 0;
+
+    const socket = io();
+    // received a message from the server
+    socket.on("msg", msg => {
+        console.log(msg);
+        socket.emit('dimensions', { width: document.documentElement.clientWidth });
+    });
+
+    // received a message from another client
+    socket.on("client_msg", msg => {
+        console.log(msg);
+    });
+
+    socket.on("connect", () => {
+        socket.emit("client_msg", "Hello from the client " + socket.id);
+    });
+
+    // received a ripple event from another client
+    socket.on("ripple", (msg) => {
+        add_ripple(msg.x - offset_x, msg.y);
+    });
+
+    socket.on("offset_x", (offset) => {
+        console.log(offset);
+        offset_x = offset;
+    });
+
+    // create a ripple on click and send it to the other clients
+    document.addEventListener('click', e => {
+        add_ripple(e.pageX, e.pageY);
+        socket.emit('ripple', { x: offset_x + e.pageX, y: e.pageY });
+        let audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.currentTime = 0
+        audioPlayer.play();
+    });
+
+
+
+    function add_ripple(x, y) {
+        // make a copy of the ripple template
+        let ripple_template = document.getElementById('ripple-template'); //nimmt SVG
+        let new_ripple = ripple_template.cloneNode(true);
+        // avoid duplicate IDs
+        new_ripple.id = 'ripple' + Math.random() * 1000;
+
+        let width = 400;
+        let height = 400;
+        new_ripple.setAttribute("height", height + "px");
+        new_ripple.setAttribute("width", width + "px");
+        new_ripple.setAttribute("viewBox", `-${100} -${60}  ${500} ${500}`);
+
+        // set center of the ripple at the mouse position
+        new_ripple.style.top = y - (height / 2) + 'px';
+        new_ripple.style.left = x - (width / 2) + 'px';
+        new_ripple.style.display = 'block';
+        new_ripple.style.position = 'absolute';
+        let animate = new_ripple.querySelector('.last')
+        // remove the ripple after the animation ends
+        animate.addEventListener('endEvent', () => {
+            new_ripple.remove();
+        });
+        document.body.appendChild(new_ripple);
+    }
+
+</script>
+
+</html>

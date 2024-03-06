@@ -1,5 +1,7 @@
 canvas_example/node_modules/
 ripple_example/node_modules/
 socket_template/node_modules/
-ripple/node_modules/
+node_modules/
 
+
+test/node_modules/@socket.io/component-emitter/index.mjs

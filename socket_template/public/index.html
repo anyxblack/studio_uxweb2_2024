@@ -18,7 +18,7 @@
             height: 100%;
             width: 100%;
             display: block;
-            background-color: rosybrown;
+            background-color: black;
         }
     </style>
 </head>
@@ -65,7 +65,6 @@
                 to: { x: e.clientX, y: e.clientY }
             });
 
-            draw_path(last_mouse, { x: e.clientX, y: e.clientY}, "white");
             last_mouse.x = e.clientX;
             last_mouse.y = e.clientY;
         }
@@ -103,11 +102,29 @@
         socket.emit("client_msg", "Hello from the client " + socket.id);
     });
 
-socket.on("draw", msg => {
-    console.log("recived draw event");
-    console.log(msg);
-    draw_path(msg.from, msg.to, "black");
-})
+    socket.on("draw", msg => {
+        console.log("received draw event");
+        console.log(msg);
+
+        // Liste der möglichen Farben
+        const possibleColors = ["white", "#00ff04", "#808080"];
+
+        // Zufällige Auswahl einer Farbe aus der Liste
+        const randomColorIndex = Math.floor(Math.random() * possibleColors.length);
+        const color = possibleColors[randomColorIndex];
+
+        // Liste der möglichen Verschiebungswerte
+        const possibleShifts = [-20, 40];
+        // Zufällige Auswahl eines Werts aus der Liste
+        const randomIndex = Math.floor(Math.random() * possibleShifts.length);
+        const shiftValue = possibleShifts[randomIndex];
+
+        const newToX = msg.to.x + shiftValue; // Verschiebung um shiftValue Pixel in X-Richtung
+
+        draw_path({ x: msg.from.x, y: msg.from.y }, { x: newToX, y: msg.to.y }, color);
+
+    })
+
 
 </script>
 
